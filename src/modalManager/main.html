@@ -1,0 +1,22 @@
+<!-- ko if: active -->
+	<div class="wd-modals" data-bind="click:hideModals,container:container">
+		<!-- ko foreach:{data:modals,afterRender:afterRenderModal()} -->
+			<div class="wd-modal__table-container" data-bind="style:modalStyle">
+				<div class="wd-modal__cell-container" data-bind="click:$parent.hideModals.bind($parent),clickBubble:false">
+					<div class="wd-modal" data-bind="click:$parent.preventHideModals.bind($parent)">
+						<div class="wd-modal__header">
+							<span class="wd-modal__header-close" data-bind="click:$parent.hideModals.bind($parent),clickBubble:false">&times;</span>
+							<h4 class="wd-modal__header-text" data-bind="text:modal.header"></h4>
+						</div>
+						<div class="wd-modal__restrictor" data-bind="style:restrictedStyle">
+							<div class="wd-modal__content">
+								<!-- ko widget: widgetOptions --><!-- /ko -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- /ko -->
+	</div>
+	<div class="wd-modals-backdrop" data-bind="style:backdropStyle"></div>
+<!-- /ko -->

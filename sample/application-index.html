@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>KO-Modals test</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="/build/main.css">
+</head>
+<body>
+
+<div class="wd-h-container">
+	<div class="wd-topline wd-affected-by-fixed-body-scroll-offset" data-bind="widgetInline:'topLine'">
+		<div class="container clearfix">
+			<div class="pull-right">
+				<div class="wd-topline-sec">
+					<a class="wd-topline-sec__link" href="<?= $this->makeLink("action=signin&place_id") ?>" data-bind="click:$root.emit('switchModal','signin')">Вход</a><a class="wd-topline-sec__link" href="<?= $this->makeLink("action=signup&place_id") ?>" data-bind="click:$root.emit('switchModal','signup')">Регистрация</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wd-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="wd-header-logo hidden-x">
+						<a class="wd-header-logo__pic" href="<?= $this->makeLink() ?>">
+							<img src="/im/<?= $data["sysname"] ?>/wd-logo.png" alt="<?= $data["hostData"]["logoAlt"] ?>">
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-9" data-bind="widgetInline:'topSearch'">
+					<form data-bind="attr:{action:formAction}">
+						<div class="wd-header-switch">
+							<span class="wd-header-switch__item" data-bind="css:{'wd-header-switch__item-sel':type()=='vac'},click:type.bind($data,'vac')">Поиск работы</span>
+							<span class="wd-header-switch__item" data-bind="css:{'wd-header-switch__item-sel':type()=='res'},click:type.bind($data,'res')">Поиск сотрудников</span>
+							<span class="wd-header-switch__item" data-bind="css:{'wd-header-switch__item-sel':type()=='comp'},click:type.bind($data,'comp')">Поиск по компаниям</span>
+							<input type="hidden" name="formData[type]" data-bind="value:type">
+						</div>
+						<div class="row wd-header-form">
+							<div class="col-sm-6 wd-header-form__search">
+								<input type="text" class="form-control" placeholder="Я ищу...">
+							</div>
+							<div class="col-sm-4 wd-header-form__place">
+								<input type="text" class="form-control" placeholder="Город...">
+							</div>
+							<div class="col-sm-2 wd-header-form__submit">
+								<button class="btn btn-wd-primary btn-block">Найти</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<?php if ($data["place_id"]): ?>
+				<a class="wd-header-logo__place hidden-xs" href="<?= $this->makeLink("place_id") ?>"><?= $data["places"][$data["place_id"]]["name"] ?></a>
+			<?php endif ?>
+		</div>
+	</div>
+	<div class="wd-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">Adv column</div>
+				<div class="col-sm-9">
+					<div class="wd-content"><?= $this->out["content"] ?></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wd-footer">
+		<div class="container">
+			footer
+		</div>
+	</div>
+</div>
+
+<!-- ko widget: "modalManager" --><!-- /ko -->
+
+<?php if ($config["use_minified_static"]): ?>
+	<script type="text/javascript" src="/build/main.js?<?= filemtime(RDIR."/static/build/main.js") ?>"></script>
+<?php else: ?>
+	<script type="text/javascript" src="/vendor/requirejs/require.js" data-main="/src/js/main.js"></script>
+<?php endif ?>
+
+</body>
+</html>

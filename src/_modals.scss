@@ -1,0 +1,71 @@
+
+$zindex-modal-background:  1040 !default;
+$zindex-modal:             1050 !default;
+
+$modal-header-bg: #efefef !default;
+$modal-content-bg: #ffffff !default;
+
+.wd-modals {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $zindex-modal;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.wd-modals-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $zindex-modal-background;
+	opacity: 0;
+	@include transition(opacity 0.5s ease);
+	background-color: rgba(0,0,0,0.5);
+}
+
+.wd-modal {
+	&__table-container {
+		display: table;
+		height: 100%;
+		width: 100%;
+		margin: 0 auto;
+	}
+	&__cell-container {
+		display: table-cell;
+		vertical-align: middle;
+		padding: 10px;
+	}
+	&__header {
+		position: relative;
+		background-color: $modal-header-bg;
+		padding: 15px;
+		h1,h2,h3,h4,h5,h6 {
+			margin: 0;
+		}
+		&-close {
+			float: right;
+			cursor: pointer;
+			font-size: 21px;
+			font-weight: 700;
+			line-height: 1;
+			color: #000000;
+			opacity: 0.2;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+	}
+	&__restrictor {
+		background-color: $modal-content-bg;
+		overflow: hidden;
+		transition: height 0.3s ease;
+	}
+	&__content {
+		padding: 15px;
+	}
+}

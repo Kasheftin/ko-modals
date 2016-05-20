@@ -1,0 +1,30 @@
+{
+	"name": "ko-modals",
+	"description": "Modal manager based on knockout, ko-widget and bootstrap",
+	"version": "1.0.1",
+	"dev-dependencies": {
+		"requirejs": "latest",
+		"requirejs-text": "latest",
+		"requirejs-domready": "latest",
+		"bootstrap": "latest",
+		"jquery": "latest",
+		"knockout": "latest",
+		"EventEmitter": "https://github.com/Wolfy87/EventEmitter.git",
+		"ko-widget": "https://github.com/kasheftin/ko-widget.git"
+	},
+	"moduleType": "amd",
+	"license": "MIT",
+	"ignore": [
+		"sample"
+	],
+	"main": "src/modalManager/main.js",
+	"keywords": ["modal manager","bootstap modal alternative"],
+	"authors": [
+		"Alexey Kuznetsov <kasheftin@gmail.com>"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/kasheftin/ko-modals"
+	},
+	"private": false
+}
